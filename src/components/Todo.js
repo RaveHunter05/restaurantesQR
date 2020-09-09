@@ -7,18 +7,17 @@ function Todo({Todo}) {
         todoRef.remove()
     }
 
-    const completeTodo =()=>{
-        const todoRef = firebase.database().ref('QR').child(Todo.id)
-        todoRef.update({
-            completed: !Todo.completed
-        })
-    }
+    // const completeTodo =()=>{
+    //     const todoRef = firebase.database().ref('QR').child(Todo.id)
+    //     todoRef.update({
+    //         completed: !Todo.completed
+    //     })
+    // }
     return (
         <div>
             <ul> 
                     <li style={{textDecoration:(Todo.completed?'line-through':'none'), listStyle:'none'}}>
-                        <input defaultChecked={Todo.completed?true:false} onChange={completeTodo} type="checkbox" name="" id="" style={{marginRight:'8px'}}/>
-                        <span style={{marginRight:'1rem'}}>{Todo.Title}</span>
+                        <span style={{marginRight:'1rem'}}>{Todo.Category}</span>
                         <button onClick={deleteTodo} style={estilos.boton}>X</button>
                     </li>
                 </ul>

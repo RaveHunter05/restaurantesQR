@@ -14,13 +14,12 @@ function TodoList() {
           for (let id in todos) {
             todoList.push({id, ...todos[id]})
           }
-          console.log(todoList)
           setTodoList(todoList)
         })
     }, [])
     return (
         <div>
-            <h1>todo List</h1>
+            <h1>Categorías</h1>
             {todoList
             ? todoList.map((todo,index)=>(
                 <Todo Todo={todo} key={index}/>
