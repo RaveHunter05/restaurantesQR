@@ -1,0 +1,53 @@
+{
+    negocio:[
+        {
+            nombre:'Comida rapida de doña Juana',
+            categorías:[
+                {
+                    nombre:'Hamburguesas',
+                    platos:[
+                        {
+                            nombre:'Hamburguesa Naruto Kun',
+                            descripcion:'Hamburguesa bien tuani',
+                            precio:'60C$'
+                        },
+                        {
+                            nombre:'Hamburguesa Notorious Big',
+                            descripcion:'Hamburguesa triple, con doble bacon, y grasa a mas no poder',
+                            precio:'150C$'
+                        }
+                    ]
+                },
+                {
+                    nombre:'Pizzas',
+                    platos:[
+                        {
+                            nombre: 'Pizza planeta',
+                            descripcion: 'la pizza del toy story xdxddd',
+                            precio: '60$'
+                        }
+                    ]
+                }
+            ]
+        }
+        {
+        nombre: 'Comida de doña Nicol',
+        categorias:[
+            {
+                nombre: '',
+                platos:[
+                    {
+
+                    },
+                    {
+
+                    }
+                ]
+            },
+            {
+
+            }
+        ]   
+        }
+    ]
+}

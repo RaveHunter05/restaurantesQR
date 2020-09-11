@@ -8,7 +8,7 @@ function AddNegocio() {
         e.preventDefault()
         const negocioRef = firebase.database().ref("NEGOCIOS")
         const negocio = {
-            Negocio
+            'Nombre':Negocio
         }
         negocioRef.push(negocio)
         setNegocio('')

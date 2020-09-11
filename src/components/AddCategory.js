@@ -13,27 +13,35 @@ function AddCategory() {
 
     const handleIdNegocio = (e) =>{
         setIdNegocio(e.target.value)
+        console.log(e.target.value)
     }
 
     const createTodo = (e) =>{
         e.preventDefault()
-        const todoRef = firebase.database().ref("CATEGORIAS")
-        const todo = {
-            Category
+        const todoRef = firebase.database().ref("NEGOCIOS").child(IdNegocio).child('Categorias')
+
+        let objetoCategoria = {
+            "nombre": Category
         }
-        todoRef.push(todo)
-        setCategory('')
+        todoRef.push(objetoCategoria)
     }
 
     useEffect(() => {
         const categoryRef = firebase.database().ref("NEGOCIOS")
         categoryRef.on('value', (snapshot) =>{
-            const negocios = snapshot.val()
+            const negocios = Object.keys(snapshot.val())
+            const valoresNegocios = snapshot.val()
             const negociosVal = []
-            for (const i in negocios) {
-                negociosVal.push(negocios[i])
-            }
+            let a = negocios.map(x=>{
+                let valores={
+                    key: x,
+                    negocio: valoresNegocios[x]
+                }
+                negociosVal.push(valores)
+            })
             setNegocios(negociosVal)
+            console.log(negociosVal)
+            
         })
     }, [])
     
@@ -43,10 +51,13 @@ function AddCategory() {
             <form onSubmit={createTodo}>
                 <label htmlFor="negocios"></label>
                 <select name="negocios" id="negocios" onChange={handleIdNegocio}>
+                    <option value="" key=''>
+
+                    </option>
                     {negocios
-                    ? negocios.map((x, key)=>(
-                        <option value={key} key={key}>
-                            {x.Negocio}
+                    ? negocios.map((x)=>(
+                        <option value={x.key} key={x.key}>
+                            {x.negocio.Nombre}
                         </option>
                     ))
                 :   ''}
