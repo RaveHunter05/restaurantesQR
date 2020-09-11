@@ -26,21 +26,29 @@ function AddCategory() {
         todoRef.push(objetoCategoria)
     }
 
+    function isUndefined(value){
+        let undefined = void(0)
+        return value === undefined
+    }
+
     useEffect(() => {
         const categoryRef = firebase.database().ref("NEGOCIOS")
         categoryRef.on('value', (snapshot) =>{
-            const negocios = Object.keys(snapshot.val())
             const valoresNegocios = snapshot.val()
-            const negociosVal = []
-            let a = negocios.map(x=>{
-                let valores={
-                    key: x,
-                    negocio: valoresNegocios[x]
-                }
-                negociosVal.push(valores)
-            })
-            setNegocios(negociosVal)
-            console.log(negociosVal)
+            if(valoresNegocios){
+                const negocios = Object.keys(snapshot.val())
+                const negociosVal = []
+                let a = negocios.map(x=>{
+                    let valores={
+                        key: x,
+                        negocio: valoresNegocios[x]
+                    }
+                    negociosVal.push(valores)
+                })
+                setNegocios(negociosVal)
+            }else{
+               return null
+            }
             
         })
     }, [])
@@ -60,7 +68,7 @@ function AddCategory() {
                             {x.negocio.Nombre}
                         </option>
                     ))
-                :   ''}
+                    :   ''}
                 </select>
                 <label htmlFor="Category">Categoría</label>
                 <input name="Category" type="text" onChange={handleOnChange} value={Category}/>
