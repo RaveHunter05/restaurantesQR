@@ -13,7 +13,6 @@ function AddCategory() {
 
     const handleIdNegocio = (e) =>{
         setIdNegocio(e.target.value)
-        console.log(e.target.value)
     }
 
     const createTodo = (e) =>{
@@ -24,11 +23,7 @@ function AddCategory() {
             "nombre": Category
         }
         todoRef.push(objetoCategoria)
-    }
-
-    function isUndefined(value){
-        let undefined = void(0)
-        return value === undefined
+        setCategory('')
     }
 
     useEffect(() => {
@@ -38,12 +33,13 @@ function AddCategory() {
             if(valoresNegocios){
                 const negocios = Object.keys(snapshot.val())
                 const negociosVal = []
-                let a = negocios.map(x=>{
+                negocios.map(x=>{
                     let valores={
                         key: x,
                         negocio: valoresNegocios[x]
                     }
                     negociosVal.push(valores)
+                    return null
                 })
                 setNegocios(negociosVal)
             }else{
@@ -59,7 +55,7 @@ function AddCategory() {
             <form onSubmit={createTodo}>
                 <label htmlFor="negocios"></label>
                 <select name="negocios" id="negocios" onChange={handleIdNegocio}>
-                    <option value="" key=''>
+                    <option value="" key='giornogiovana'>
 
                     </option>
                     {negocios
